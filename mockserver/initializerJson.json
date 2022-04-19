@@ -1,0 +1,32 @@
+[
+    {
+        "httpRequest": {
+            "method": "GET",
+            "path": "/api/global"
+        },
+        "httpResponse": {
+            "body": "{\"cache_type\": {\"global\"}",
+            "statusCode": 200
+        }
+    },
+    {
+        "httpRequest": {
+            "method": "GET",
+            "path": "/api/user"
+        },
+        "httpResponse": {
+            "body": "{\"cache_type\": {\"user\"}",
+            "statusCode": 200
+        }
+    },
+    {
+        "httpRequest": {
+            "method": "GET",
+            "path": "/api/none"
+        },
+        "httpResponse": {
+            "body": "{\"cache_type\": {\"none\"}",
+            "statusCode": 200
+        }
+    },
+]

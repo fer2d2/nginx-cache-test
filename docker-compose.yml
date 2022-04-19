@@ -1,8 +1,27 @@
-web:
-  image: nginx
-  volumes:
-    - ./confd:/etc/nginx/conf.d
-    - ./nginx.conf:/etc/nginx/nginx.conf
-    - ./cache:/var/cache/nginx
-  ports:
-    - "8080:80"
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./confd:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./cache:/var/cache/nginx
+    ports:
+      - "8080:80"
+    networks:
+      demo:
+        aliases:
+          - nginx.docker
+  mockserver:
+    image: mockserver/mockserver:latest
+    environment:
+      MOCKSERVER_WATCH_INITIALIZATION_JSON: "true"
+      MOCKSERVER_PROPERTY_FILE: /config/mockserver.properties
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/initializerJson.json
+    volumes:
+      - ./mockserver:/config
+    networks:
+      demo:
+        aliases:
+          - mockserver.docker
+networks:
+  demo:
