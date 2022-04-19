@@ -1,0 +1,8 @@
+web:
+  image: nginx
+  volumes:
+    - ./confd:/etc/nginx/conf.d
+    - ./nginx.conf:/etc/nginx/nginx.conf
+    - ./cache:/var/cache/nginx
+  ports:
+    - "8080:80"
